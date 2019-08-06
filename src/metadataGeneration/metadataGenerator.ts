@@ -1,5 +1,6 @@
 import * as mm from 'minimatch';
 import * as ts from 'typescript';
+import { Block } from 'typescript';
 import { ControllerGenerator } from './controllerGenerator';
 import { Tsoa } from './tsoa';
 
@@ -28,7 +29,18 @@ export class MetadataGenerator {
       }
 
       ts.forEachChild(sf, (node) => {
-        this.nodes.push(node);
+        if (node.kind === ts.SyntaxKind.FunctionDeclaration && this.IsExportedNode(node)) {
+          ts.forEachChild( node, (childNode) => {
+            if (childNode.kind === ts.SyntaxKind.Block) {
+              ( childNode as Block ).statements.forEach( (statementNode) => {
+                if(statementNode.kind === ts.SyntaxKind.ClassDeclaration) {
+                  this.nodes.push(statementNode)
+                }
+              })
+            }
+          })
+        }
+        // this.nodes.push(node);
       });
     });
 
