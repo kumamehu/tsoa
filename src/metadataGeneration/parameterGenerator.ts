@@ -15,7 +15,7 @@ export class ParameterGenerator {
     private readonly current: MetadataGenerator,
   ) { }
 
-  public Generate(): Tsoa.Parameter| undefined {
+  public Generate(): Tsoa.Parameter {
     const decoratorName = getDecoratorName(this.parameter, (identifier) => this.supportParameterDecorator(identifier.text));
 
     switch (decoratorName) {
@@ -32,9 +32,22 @@ export class ParameterGenerator {
       case 'Path':
         return this.getPathParameter(this.parameter);
       default:
-        return undefined;
+        return this.getEmptyParameter(this.parameter);
         // return this.getPathParameter(this.parameter);
     }
+  }
+
+  private getEmptyParameter(parameter: ts.ParameterDeclaration): Tsoa.Parameter {
+    const parameterName = (parameter.name as ts.Identifier).text;
+    return {
+      description: this.getParameterDescription(parameter),
+      in: 'empty',
+      name: parameterName,
+      parameterName,
+      required: !parameter.questionToken && !parameter.initializer,
+      type: { dataType: 'object' },
+      validators: getParameterValidators(this.parameter, parameterName),
+    };
   }
 
   private getRequestParameter(parameter: ts.ParameterDeclaration): Tsoa.Parameter {

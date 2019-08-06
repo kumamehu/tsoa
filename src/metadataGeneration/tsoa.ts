@@ -16,7 +16,7 @@ export namespace Tsoa {
     description?: string;
     method: 'get' | 'post' | 'put' | 'delete' | 'options' | 'head' | 'patch' | 'head';
     name: string;
-    parameters: Array<Parameter| undefined>;
+    parameters: Parameter[];
     path: string;
     type: Type;
     tags?: string[];
@@ -30,7 +30,7 @@ export namespace Tsoa {
   export interface Parameter {
     parameterName: string;
     description?: string;
-    in: 'query' | 'header' | 'path' | 'formData' | 'body' | 'body-prop' | 'request';
+    in: 'query' | 'header' | 'path' | 'formData' | 'body' | 'body-prop' | 'request' | 'empty';
     name: string;
     required?: boolean;
     type: Type;

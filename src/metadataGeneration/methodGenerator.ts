@@ -87,8 +87,8 @@ export class MethodGenerator {
         const controllerId = (this.node.parent as ts.ClassDeclaration).name as ts.Identifier;
         throw new GenerateMetadataError(`${e.message} \n in '${controllerId.text}.${methodId.text}'`);
       }
-    }).filter((e) => {
-      return e !== undefined;
+    }).filter((p) => {
+      return p.in !== 'empty';
     });
 
     const bodyParameters = parameters.filter((p) => p.in === 'body');
