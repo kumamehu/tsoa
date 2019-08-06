@@ -51,7 +51,7 @@ export class ControllerGenerator {
   }
 
   private getPath() {
-    const decorators = getDecorators(this.node, (identifier) => identifier.text === 'Route');
+    const decorators = getDecorators(this.node, (identifier) => identifier.text === 'controller');
     if (!decorators || !decorators.length) {
       return;
     }

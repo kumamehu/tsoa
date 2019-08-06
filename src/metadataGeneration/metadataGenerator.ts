@@ -39,8 +39,9 @@ export class MetadataGenerator {
               })
             }
           })
+        } else {
+          this.nodes.push(node);
         }
-        // this.nodes.push(node);
       });
     });
 

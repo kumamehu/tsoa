@@ -10,6 +10,7 @@ import { Tsoa } from './tsoa';
 import { TypeResolver } from './typeResolver';
 
 export class MethodGenerator {
+  // private method: 'get' | 'post' | 'put' | 'patch' | 'delete' | 'head';
   private method: 'get' | 'post' | 'put' | 'patch' | 'delete' | 'head';
   private path: string;
 
@@ -22,6 +23,24 @@ export class MethodGenerator {
     this.processMethodDecorators();
   }
 
+  public inversifyPathAnnotationToStandard( invPath: string ) {
+    switch (invPath) {
+      case 'httpGet':
+        return 'get';
+      case 'httpPost':
+        return 'post';
+      case 'httpPut':
+        return 'put';
+      case 'httpDelete':
+        return 'delete';
+      case 'httpPatch':
+        return 'patch';
+      case 'httpHead':
+        return 'head';
+      default:
+        return null;
+    }
+  }
   public IsValid() {
     return !!this.method;
   }
@@ -68,6 +87,8 @@ export class MethodGenerator {
         const controllerId = (this.node.parent as ts.ClassDeclaration).name as ts.Identifier;
         throw new GenerateMetadataError(`${e.message} \n in '${controllerId.text}.${methodId.text}'`);
       }
+    }).filter((e) => {
+      return e !== undefined;
     });
 
     const bodyParameters = parameters.filter((p) => p.in === 'body');
@@ -100,7 +121,7 @@ export class MethodGenerator {
     const expression = decorator.parent as ts.CallExpression;
     const decoratorArgument = expression.arguments[0] as ts.StringLiteral;
 
-    this.method = decorator.text.toLowerCase() as any;
+    this.method = this.inversifyPathAnnotationToStandard(decorator.text) as any;
     // if you don't pass in a path to the method decorator, we'll just use the base route
     // todo: what if someone has multiple no argument methods of the same type in a single controller?
     // we need to throw an error there
@@ -194,7 +215,7 @@ export class MethodGenerator {
   }
 
   private supportsPathMethod(method: string) {
-    return ['get', 'post', 'put', 'patch', 'delete', 'head'].some((m) => m === method.toLowerCase());
+    return ['get', 'post', 'put', 'patch', 'delete', 'head'].some((m) => m === this.inversifyPathAnnotationToStandard(method));
   }
 
   private getExamplesValue(argument: any) {

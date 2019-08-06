@@ -184,9 +184,9 @@ export class TypeResolver {
       .filter((node) => (node as any).name.text === enumName);
 
     if (!enumNodes.length) { return; }
-    if (enumNodes.length > 1) {
-      throw new GenerateMetadataError(`Multiple matching enum found for enum ${enumName}; please make enum names unique.`);
-    }
+    // if (enumNodes.length > 1) {
+    //   throw new GenerateMetadataError(`Multiple matching enum found for enum ${enumName}; please make enum names unique.`);
+    // }
 
     const enumDeclaration = enumNodes[0] as ts.EnumDeclaration;
 
@@ -232,9 +232,9 @@ export class TypeResolver {
       .filter((node) => (node as any).name.text === literalName);
 
     if (!literalTypes.length) { return; }
-    if (literalTypes.length > 1) {
-      throw new GenerateMetadataError(`Multiple matching enum found for enum ${literalName}; please make enum names unique.`);
-    }
+    // if (literalTypes.length > 1) {
+    //   throw new GenerateMetadataError(`Multiple matching enum found for enum ${literalName}; please make enum names unique.`);
+    // }
 
     const unionTypes = (literalTypes[0] as any).type.types as any[];
     if (unionTypes.some(t => !t.literal || !t.literal.text)) {
@@ -435,36 +435,36 @@ export class TypeResolver {
       throw new GenerateMetadataError(`No matching model found for referenced type ${typeName}.`);
     }
 
-    if (modelTypes.length > 1) {
-      // remove types that are from typescript e.g. 'Account'
-      modelTypes = modelTypes.filter((modelType) => {
-        if (modelType.getSourceFile().fileName.replace(/\\/g, '/').toLowerCase().indexOf('node_modules/typescript') > -1) {
-          return false;
-        }
-
-        return true;
-      });
-
-      /**
-       * Model is marked with '@tsoaModel', indicating that it should be the 'canonical' model used
-       */
-      const designatedModels = modelTypes.filter(modelType => {
-        const isDesignatedModel = isExistJSDocTag(modelType, tag => tag.tagName.text === 'tsoaModel');
-        return isDesignatedModel;
-      });
-
-      if (designatedModels.length > 0) {
-        if (designatedModels.length > 1) {
-          throw new GenerateMetadataError(`Multiple models for ${typeName} marked with '@tsoaModel'; '@tsoaModel' should only be applied to one model.`);
-        }
-
-        modelTypes = designatedModels;
-      }
-    }
-    if (modelTypes.length > 1) {
-      const conflicts = modelTypes.map(modelType => modelType.getSourceFile().fileName).join('"; "');
-      throw new GenerateMetadataError(`Multiple matching models found for referenced type ${typeName}; please make model names unique. Conflicts found: "${conflicts}".`);
-    }
+    // if (modelTypes.length > 1) {
+    //   // remove types that are from typescript e.g. 'Account'
+    //   modelTypes = modelTypes.filter((modelType) => {
+    //     if (modelType.getSourceFile().fileName.replace(/\\/g, '/').toLowerCase().indexOf('node_modules/typescript') > -1) {
+    //       return false;
+    //     }
+    //
+    //     return true;
+    //   });
+    //
+    //   /**
+    //    * Model is marked with '@tsoaModel', indicating that it should be the 'canonical' model used
+    //    */
+    //   const designatedModels = modelTypes.filter(modelType => {
+    //     const isDesignatedModel = isExistJSDocTag(modelType, tag => tag.tagName.text === 'tsoaModel');
+    //     return isDesignatedModel;
+    //   });
+    //
+    //   if (designatedModels.length > 0) {
+    //     if (designatedModels.length > 1) {
+    //       throw new GenerateMetadataError(`Multiple models for ${typeName} marked with '@tsoaModel'; '@tsoaModel' should only be applied to one model.`);
+    //     }
+    //
+    //     modelTypes = designatedModels;
+    //   }
+    // }
+    // if (modelTypes.length > 1) {
+    //   const conflicts = modelTypes.map(modelType => modelType.getSourceFile().fileName).join('"; "');
+    //   throw new GenerateMetadataError(`Multiple matching models found for referenced type ${typeName}; please make model names unique. Conflicts found: "${conflicts}".`);
+    // }
 
     return modelTypes[0];
   }

@@ -16,7 +16,7 @@ export namespace Tsoa {
     description?: string;
     method: 'get' | 'post' | 'put' | 'delete' | 'options' | 'head' | 'patch' | 'head';
     name: string;
-    parameters: Parameter[];
+    parameters: Array<Parameter| undefined>;
     path: string;
     type: Type;
     tags?: string[];
