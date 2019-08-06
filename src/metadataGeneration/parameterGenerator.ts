@@ -15,21 +15,40 @@ export class ParameterGenerator {
     private readonly current: MetadataGenerator,
   ) { }
 
+  public inversifyParamAnnotationToStandard( invParam: string ) {
+    switch (invParam) {
+      case 'request':
+        return 'request';
+      case 'requestBody':
+        return 'body';
+      case 'requestHeaders':
+        return 'header';
+      case 'queryParam':
+        return 'query';
+      case 'requestParam':
+        return 'parem';
+      case 'BodyProp':
+        return 'bodyprop';
+      default:
+        return null;
+    }
+  }
+
   public Generate(): Tsoa.Parameter {
     const decoratorName = getDecoratorName(this.parameter, (identifier) => this.supportParameterDecorator(identifier.text));
 
     switch (decoratorName) {
-      case 'Request':
+      case 'request':
         return this.getRequestParameter(this.parameter);
-      case 'Body':
+      case 'requestBody':
         return this.getBodyParameter(this.parameter);
       case 'BodyProp':
         return this.getBodyPropParameter(this.parameter);
-      case 'Header':
+      case 'requestHeaders':
         return this.getHeaderParameter(this.parameter);
-      case 'Query':
+      case 'queryParam':
         return this.getQueryParameter(this.parameter);
-      case 'Path':
+      case 'requestParam':
         return this.getPathParameter(this.parameter);
       default:
         return this.getEmptyParameter(this.parameter);
@@ -49,7 +68,6 @@ export class ParameterGenerator {
       validators: getParameterValidators(this.parameter, parameterName),
     };
   }
-
   private getRequestParameter(parameter: ts.ParameterDeclaration): Tsoa.Parameter {
     const parameterName = (parameter.name as ts.Identifier).text;
     return {
@@ -130,7 +148,7 @@ export class ParameterGenerator {
       default: getInitializerValue(parameter.initializer, type),
       description: this.getParameterDescription(parameter),
       in: 'query' as 'query',
-      name: getDecoratorTextValue(this.parameter, ident => ident.text === 'Query') || parameterName,
+      name: getDecoratorTextValue(this.parameter, ident => ident.text === 'queryParam') || parameterName,
       parameterName,
       required: !parameter.questionToken && !parameter.initializer,
       validators: getParameterValidators(this.parameter, parameterName),
@@ -139,7 +157,7 @@ export class ParameterGenerator {
     if (type.dataType === 'array') {
       const arrayType = type as Tsoa.ArrayType;
       if (!this.supportPathDataType(arrayType.elementType)) {
-        throw new GenerateMetadataError(`@Query('${parameterName}') Can't support array '${arrayType.elementType.dataType}' type.`);
+        throw new GenerateMetadataError(`@queryParam('${parameterName}') Can't support array '${arrayType.elementType.dataType}' type.`);
       }
       return {
         ...commonProperties,
@@ -149,7 +167,7 @@ export class ParameterGenerator {
     }
 
     if (!this.supportPathDataType(type)) {
-      throw new GenerateMetadataError(`@Query('${parameterName}') Can't support '${type.dataType}' type.`);
+      throw new GenerateMetadataError(`@queryParam('${parameterName}') Can't support '${type.dataType}' type.`);
     }
 
     return {
@@ -161,13 +179,13 @@ export class ParameterGenerator {
   private getPathParameter(parameter: ts.ParameterDeclaration): Tsoa.Parameter {
     const parameterName = (parameter.name as ts.Identifier).text;
     const type = this.getValidatedType(parameter, false);
-    const pathName = getDecoratorTextValue(this.parameter, (ident) => ident.text === 'Path') || parameterName;
+    const pathName = getDecoratorTextValue(this.parameter, (ident) => ident.text === 'requestParam') || parameterName;
 
     if (!this.supportPathDataType(type)) {
-      throw new GenerateMetadataError(`@Path('${parameterName}') Can't support '${type.dataType}' type.`);
+      throw new GenerateMetadataError(`@requestParam('${parameterName}') Can't support '${type.dataType}' type.`);
     }
-    if (!this.path.includes(`{${pathName}}`)) {
-      throw new GenerateMetadataError(`@Path('${parameterName}') Can't match in URL: '${this.path}'.`);
+    if (!this.path.includes(`:${pathName}`)) {
+      throw new GenerateMetadataError(`@requestParam('${parameterName}') Can't match in URL: '${this.path}'.`);
     }
 
     return {
@@ -197,7 +215,7 @@ export class ParameterGenerator {
   }
 
   private supportParameterDecorator(decoratorName: string) {
-    return ['header', 'query', 'parem', 'body', 'bodyprop', 'request'].some((d) => d === decoratorName.toLocaleLowerCase());
+    return ['header', 'query', 'parem', 'body', 'bodyprop', 'request'].some((d) => d === this.inversifyParamAnnotationToStandard(decoratorName));
   }
 
   private supportPathDataType(parameterType: Tsoa.Type) {
