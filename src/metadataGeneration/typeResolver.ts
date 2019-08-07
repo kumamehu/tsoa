@@ -35,6 +35,22 @@ export class TypeResolver {
       return primitiveType;
     }
 
+    const tN = this.typeNode as any;
+    if (tN.typeName !== undefined) {
+      if (tN.typeName.escapedText === 'T') {
+        return {
+          dataType: 'any',
+        };
+      }
+    }
+    if (tN.typeName !== undefined) {
+      if (tN.typeName.escapedText === 'D') {
+        return {
+          dataType: 'any',
+        };
+      }
+    }
+
     if (this.typeNode.kind === ts.SyntaxKind.ArrayType) {
       return {
         dataType: 'array',
@@ -70,8 +86,25 @@ export class TypeResolver {
       return { dataType: 'any' } as Tsoa.Type;
     }
 
-    if(this.typeNode.kind === ts.SyntaxKind.ObjectKeyword) {
+    if (this.typeNode.kind === ts.SyntaxKind.ObjectKeyword) {
       return { dataType: 'object' } as Tsoa.Type;
+    }
+
+    if (this.typeNode.kind === ts.SyntaxKind.TupleType) {
+      return { dataType: 'object' } as Tsoa.Type;
+    }
+
+    if (this.typeNode.kind === ts.SyntaxKind.LiteralType) {
+      const dd = this.typeNode as any;
+      const literal = dd.literal;
+      switch (literal.kind) {
+        case ts.SyntaxKind.StringLiteral:
+          return { dataType: 'string' };
+        case ts.SyntaxKind.BigIntLiteral:
+          return { dataType: 'long' };
+        case ts.SyntaxKind.NumericLiteral:
+          return { dataType: 'integer' };
+      }
     }
 
     if (this.typeNode.kind !== ts.SyntaxKind.TypeReference) {
@@ -309,7 +342,7 @@ export class TypeResolver {
 
   private getTypeName(typeName: string, genericTypes?: ts.NodeArray<ts.TypeNode>): string {
     if (!genericTypes || !genericTypes.length) { return typeName; }
-    return typeName + genericTypes.map((t) => this.getAnyTypeName(t)).join('');
+    return typeName + genericTypes.map((t) => '<' + this.getAnyTypeName(t)) + '>';
   }
 
   private getAnyTypeName(typeNode: ts.TypeNode): string {
