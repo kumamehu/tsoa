@@ -29,7 +29,7 @@ const versionDefault = () => getPackageJsonValue('version', '1.0.0');
 const descriptionDefault = () => getPackageJsonValue('description', 'Build swagger-compliant REST APIs using TypeScript and Node');
 const licenseDefault = () => getPackageJsonValue('license', 'MIT');
 
-const getConfig = async (configPath = 'tsconfig.json'): Promise<Config> => {
+const getConfig = async (configPath = 'tsoa.json'): Promise<Config> => {
   let config: Config;
   try {
     const ext = path.extname(configPath);

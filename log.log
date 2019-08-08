@@ -1,0 +1,572 @@
+* 0d06c66 : Revert "Added Tuple Type, Generic Types and Reference Interface Type"
+* 4c92394 : Revert " Added support for inversify-express-utils parameters support"
+* 9de548e : config file name changed to tsconfig.json from tsoa.json
+* 270c443 : Added Tuple Type, Generic Types and Reference Interface Type
+* d8cf5af :  Added support for inversify-express-utils parameters support
+* 9665fe3 : Resolved undefined parameter Error
+* 8d4ac34 :  Made compatible with inversify-express-utils and removed Multiple matchong ref and enum exceptions
+* 64cda9e :  Made compatible for Controller Factories
+*   a5ee290 : Merge pull request #378 from lucas-rudd/add-support-for-object-keyword
+|\  
+| * d61388e : added tests for both object type and object array type
+| * 9a64c7a : added ability to use the 'object' keyword in an interface definition
+|/  
+* 61708c0 : Security fixes for validator and yargs (#370)
+* ebd83bd : v2.4.3
+* 5ec7835 : fall back to any for tagged union types
+* feb71cc : v2.4.2
+* 84dc30b : security audit fixes
+* 865b794 : v2.4.1
+* b73abd4 : Update package-lock.json (#367)
+* 10af44a : Add trailing whitespace trimming to .editorconfig (#366)
+* 9510455 : Rename default templates with hbs extension (#364)
+* f7c0f17 : Correctly generate open api 3 document 358 (#359)
+* 7c9dbd0 : v2.4.0
+* ce62457 : remove @types/handlebars
+* 1b14b0f : Spec generator for OpenAPI 3.0.0 (#249)
+*   e2f68fe : Merge pull request #357 from dgreene1/fix-audit-findings-issue-326
+|\  
+| * 3fe7af4 : upgrading packages to remove vulnerabilities
+* | 6b74c80 : Docs on automating regeneration
+|/  
+* e4db3cd : v2.3.81
+* 6deb012 : [bugfix] koa error handling (#335)
+* 5a39fc2 : v2.3.8
+* 9613517 : cast validatedArgs
+* 65c316e : remove changelog, remove unused config files
+* 5be2101 : readme updates
+* f47caef : package-lock
+*   43e3b1b : Merge branch 'master' of github.com:lukeautry/tsoa
+|\  
+| * e6e7b21 : fix(koa): return promise in further sections of the koa routes template (#323)
+* | 2cf075f : faster tests refactor resolve type code
+|/  
+* 1344fc5 : programmatic usage in readme
+* 9fe22f1 : v2.3.7
+* afbed97 : package-lock
+* a92de08 : typed RegisterRoutes param asyncify koa handlers
+* b485528 : update typescript, refactor test scripts
+* b3447b1 : link to different example
+* 532c4ee : v2.3.6
+* fc3eefe : regen package-lock.json
+* 6b1a097 : v2.3.5
+* a5d38d5 : security audit: update mocha, merge
+* 548c9d7 : v2.3.4
+* 15ffa62 : remove tsversion settings gen yarn lock
+* c9dda31 : removed handlebars-helpers (#291)
+* bfc87ae : v2.3.3
+* 975c3e8 : jsdoc defaults
+* c3fd00c : v2.3.2
+* 234ddf2 : ignore routes files
+* 33bf046 : env-var test -> tsoa_test
+* 1f577fc : v2.3.1
+*   1f065a8 : Merge pull request #317 from slapersonne/master
+|\  
+| * 43ab603 : Fix 'collectionFormat' generation + enhances array parameters handling
+|/  
+*   1ac97a1 : Merge pull request #315 from dpoetzsch/master
+|\  
+| * ff2a46d : refactoring: removed global variable from module
+| * 5d039e4 : fixed model validation with optional and additional properties (issue #314)
+| * da3013a : added tests for model validation
+|/  
+* c6ec860 : v2.3.0
+* 8e0cc58 : convert blocking ops to async expose modules for programmatic usage
+*   848793e : Merge pull request #295 from Cerberuser/validating_falsy_values
+|\  
+| * 9c0ffa3 : Removed commented-out test
+| * 83d29f2 : Reverted change to vscode.json; all values are treated as nullable
+| * 106dff6 : Allowing "any" values be null (and only them)
+| * 6677b68 : Added tests for string-to-any dictionary (one passing, one failing)
+| * 3c4acc0 : Two new test cases (one passing, one failing)
+* |   08a4840 : Merge pull request #312 from tpaulshippy/fix-swagger-base-path
+|\ \  
+| |/  
+|/|   
+| * 614d98d : Per swagger.io docs basePath should always start with a leading slash
+|/  
+* 55af586 : handle 0 value for int/float/string validation
+* 395fa80 : upgrade typescript-formatter
+* 8d9f3cc : typescript 3.1.1
+* 59b28e1 : generate package-lock
+* 6ba23cc : v2.2.5
+* 5cd0482 : v2.2.4
+* 04fbe19 : unused response parameter
+* 486b17c : v2.2.3
+* 1659988 : v2.2.2
+* 3b41bb1 : update some deps more strictly typed security decorator
+* 0d0689a : yarn lock file/routes
+* 05f4ed6 : v2.2.1
+*   442d681 : Merge pull request #286 from bbuhler/feature/head-method
+|\  
+| * 9ae8f14 : Added unit tests & fixtures for HEAD method
+| * f190b41 : Added HTTP method HEAD
+|/  
+*   1f4e247 : Merge pull request #287 from endor/add-test-for-security-class-decorator-2
+|\  
+| * 3f9b0fd : Add missing authentication module to security class decorator
+* |   d267802 : Merge pull request #285 from endor/add-test-for-security-class-decorator
+|\ \  
+| |/  
+| * f7f1de6 : Add test for security class decorator
+|/  
+*   1e63641 : Merge pull request #282 from endor/fix-koa-error-throwing
+|\  
+| * f10a9e3 : Change error code in koa to be backwards-compatible
+* |   d7b1d63 : Merge pull request #283 from endor/fix-security
+|\ \  
+| * | 58e3b24 : Fix security decorator to also work on controller
+| |/  
+* |   617bac9 : Merge pull request #284 from endor/revert-decorator-return-types
+|\ \  
+| |/  
+|/|   
+| * 9b21e99 : Use Function as decorator return type
+|/  
+*   c663a00 : Merge pull request #262 from endor/update-readme
+|\  
+| * fba4e65 : Add table of contents to README
+|/  
+*   24e64bd : Merge pull request #276 from aidenwallis/master
+|\  
+| * 59d200e : throw error on authentication middleware
+| * da9da6c : bubble up errors per route too
+| * 0a2e4e0 : throw koa errors
+* |   912c935 : Merge pull request #277 from endor/op-id
+|\ \  
+| * | 6327363 : Add test for custom operationId
+| * | 5155120 : Added documentation for operationId under decorators in README
+| * | 72b33ce : Added OperationId tag
+|/ /  
+* |   c9b25f0 : Merge pull request #272 from jstienne/feature/addTagDescriptionDecorator
+|\ \  
+| |/  
+|/|   
+| * 64f9d57 :  [#176] Add tags for Swagger config
+* |   4e7b219 : Merge pull request #270 from slapersonne/master
+|\ \  
+| |/  
+|/|   
+| * 96d5806 : Updates template and tests to hapi v17
+|/  
+*   927f123 : Merge pull request #267 from pburrows/master
+|\  
+| * f6aeff0 : created specific decorator return types
+| * 53be8b1 : change decorator return type to Function for no-unsafe-any tslint rule.
+* | 975f93b : v2.2.0
+* |   f312498 : Merge pull request #269 from Michsior14/master
+|\ \  
+| * | cb0349a : fix install package from github directly
+|/ /  
+* |   c5f4758 : Merge pull request #268 from jpramondon/fix/swaggerExamples2
+|\ \  
+| |/  
+|/|   
+| * 093b8b2 : Unleashed some forgotten code execution so to find examples in the swagger.conf file
+* |   9e035dd : Merge pull request #263 from endor/2.1.9
+|\ \  
+| * | f2701c6 : 2.1.9
+|/ /  
+* |   1afa3c8 : Merge pull request #259 from endor/extend-security
+|\ \  
+| * | f09657d : Allow combining two security methods with AND instead of OR
+| |/  
+* |   88bd448 : Merge pull request #260 from cburnicki/entryFile_throw_error
+|\ \  
+| * | 795d575 : Throw an error if the specified entryFile can't be found
+|/ /  
+* |   90aa440 : Merge pull request #253 from endor/fix-examples-in-success-responses
+|\ \  
+| |/  
+|/|   
+| * 13c500e : Also evaluate Examples when there is a SuccessResponse; fixes #245
+|/  
+* 32763f9 : 2.1.8
+*   a26b5b8 : Merge branch 'master' of github.com:lukeautry/tsoa
+|\  
+| * 627b671 : Allow setting status code and headers in controllers that do not extend Controller (#246)
+| * f97c738 : Allow interfaces to be documented via @example (#241)
+| *   d15d9fa : Merge pull request #244 from MatthiasKunnen/issue-112-undefined-decorator
+| |\  
+| | * 4fc4d0a : Added test for simple decorator expression
+| | * 52924d3 : Handled simple decorator expression
+| |/  
+* | 57a0674 : v2.1.7
+|/  
+* 945c76c : FEATURE: Add "schemes" option into configuration (#222)
+* ed2ae5b : BUGFIX: Allows false to be returned from controller (#233)
+* 5b57b1e : BUGFIX: Fix typo Secuirty -> Security (#237)
+* 081c53e : BUGFIX #209: Pass property format to swagger
+* e75f659 : x-nullable support
+* fc44bfc : linkify issue
+* 1bcf0e1 : maintainer section
+* a9242ee : Release v2.1.5
+* 7e4c234 : lock typescript, regen lock files
+* cce2762 : Fix typescript at 2.7.x for npm (non-yarn) users (#229)
+* bb680de : Fix required parameter error message. (#216)
+* e9b2eb4 : Release v2.1.4
+* c286a67 : unified lineendings for routes.ts
+* aea1248 : Release v2.1.3
+* 9760b91 : tsoaModel implementation
+* a185e01 : update typescript
+* fe940e8 : BUGFIX: Resetting controller status when it's singleton
+* 33ad276 : DOCS: Show how to use an upload file multer
+* 59b6ef3 : DOCS: typescript-ioc docs as an alternative to inversify.js
+* 0af0ed5 : Release v2.1.2
+* 4ca3e7f : support ignoring model properties
+* be0b5d3 : Release v2.1.1
+* b5a5298 : prefer overridden types
+*   dc0b5d7 : handle undefined properties
+|\  
+| * 2012836 : Interface parent child bug possible fix.
+| * 4c60580 : Decorator fix
+* | 977b535 : BUGFIX: Handle empty base path
+* | 768ab3c : Bugfix: Extended resolveType to better handle TypeLiteral and String TypeReference typeNodes
+* | 3642857 : 2.1.0
+* | 2fc23dd : fix test
+* | d76928d : fixed for ts 2.7.x (#191)
+* | 7cc69ab : Release v2.0.2
+* | ddbc51c : fix tests
+* | f0ce5dc : fix linting error
+* | 84d1bb3 : Account name bug / #158 (#165)
+* | 967f96f : BUGFIX: Fixes issue where no-implicit-any was complaining about hapi routes (#171)
+* | 2cd3161 : Release v2.0.1
+* | 0352cfe : Simplify autogenerated operation IDs
+* | 76dd44d : Release v1.3.6
+* | 95636c4 : FEATURE: Support ignoring directories for scan
+* | 1047921 : Base, Controller and Method paths normalisation (#161)
+* | d27126d : FIX: Swagger output body parameter array type #167
+* | e618938 : Release v1.3.5
+* | a357de2 : TEST: Test fixes for email pattern, upgrade to TypeScript 2.5
+* | a6e21fa : BUGFIX: TypeScript 2.5
+* | 2fd6781 : BUGFIX: Fix for typo in route templates
+* | 63868d4 : Release v1.3.4
+* | 0162d90 : FEATURE: "Hidden" decorator to hide endpoints from swagger output
+* | 0ca54ff : Release v1.3.3
+* | 7f3d342 : allow multiple @security annotations as per swagger spec (#148)
+* | 5465c70 : Release v1.3.2
+* | 65a2cf9 : Fix: Return proper exit code on error (#145)
+* | f7ae88d : Support define `@Tags` and `@Security` in Controller class (#138)
+* | adb721d : Release v1.3.1
+* | dc66505 : Fix: tslint typescript-format parse error
+* | 61573ba : Fix: Date type in an @Example decorator (#36)
+* | 88f2ebd : Support swagger default value for property and parameter
+* | 69735e9 : Support implicit type (#140)
+* | f034256 : FIX: Set default title, version, description and license without package.json (#123)
+* | 8797c48 : 1.3.0
+* | 0534cbd : Extract enum, support UnionType, Suuport response header and more (#141)
+* | c483936 : FIX: typo in securityController.ts (#128)
+* | 35cdc74 : v1.2.3
+|/  
+* d03c94f : BUGFIX: Changing authenticateMiddleware to return the auth function. (#127)
+* 2772974 : TEST: templateHelpers
+* 661265a : Update Swagger Specification
+* 2eebd83 : FIX: typo in parameterGenerator.ts (#122)
+* c1cd34f : FEATURE: TypeAliasDeclaration support (#115)
+*   fdbe785 : Merge pull request #110 from kingjerod/master
+|\  
+| * 9eaa873 : Updated README for security section
+|/  
+*   9275802 : Merge branch 'liveshopper-master'
+|\  
+| * c3b904e : fix(testing): Changed 'Gender' enum to type to deal with model mismatch.
+| *   32c10ce : merge branch 'master' into branch 'liveshopper-master'
+| |\  
+|/ /  
+| *   f433d1e : Merge branch 'master' into master
+| |\  
+| | * 5890c1c : FEATURE: Request data validation and prety error
+| * | 6c2e358 : FIX: Made compiler options consistent for swagger and routes commands.
+| * | 6229f87 : FEATURE: Support for modifying the internal compiler options
+| |/  
+* | 8d8414d : fix(linting): Lock tslint and fix linter errors.
+* | e2ceaf0 : FEATURE: Support numeric enum initializers (#106)
+* | 10304de : 1.2.2
+* | 5c179b7 : 1.2.1
+* | 804ed90 : BUGFIX: Cannot set statuscode for express.js #94
+* | d5808c5 : 1.2.0
+* | ac20c40 : FEATURE: Request data validation and prety error
+|/  
+* 8244dd9 : FEATURE: Swagger specification fields
+* d52d3f5 : 1.1.8
+* b8e572e : FEATURE: CLI support override host and basePath
+* 271a2c1 : FEATURE: pretty swagger operation id
+* b1d8bc8 : BUGFIX: fixes enum validation not throwing an error (#88)
+* 157c60a : FEATURE: Custom route templates
+* e5f5b63 : FEATURE: Support for anonymous objects/dictionary types
+* 7d966a3 : TWEAK: Allow non-production builds
+* 36358f6 : 1.1.5
+*   c5dc20e : FEATURE: Support for generic types
+|\  
+| *   dd14b6f : ISSUE-27 Resolve merge conflicts
+| |\  
+| * | e7af219 : ISSUE-27 Modified the output of generic type string
+| * |   0fd0cff : Merge branch 'master' of github.com:Dirrk/tsoa into ISSUE-27
+| |\ \  
+| * \ \   3a938da : Merge branch 'master' of github.com:Dirrk/tsoa into ISSUE-27
+| |\ \ \  
+| * | | | b5586cc : Added genericType handling for request/response objects
+* | | | | 5a8a20d : 1.1.4
+* | | | | d9efe04 : CODEQUALITY: tslint prefer-const and more
+* | | | |   2cf97b3 : FEATURE: Support summary, enum, data type validation
+|\ \ \ \ \  
+| |_|_|_|/  
+|/| | | |   
+| * | | | 456f598 : - support summary document - support integer, long, float, double, date, datetime - support number enum and string enum
+* | | | | f057b40 : FEATURE: Namespaces support
+|/ / / /  
+* | | | d950784 : 1.1.3
+* | | | a547400 : fix deps
+| |_|/  
+|/| |   
+* | | c1f398a : BUGFIX: Typescript formatter issues, documentation updates
+| |/  
+|/|   
+* | 9118c31 : 1.1.2
+* | c8f47b7 : FEATURE: Support inject value from body properties
+|/  
+* 17098aa : Fix issues lukeautry/tsoa#68
+* 47bc133 : FEATURE: support deprecated method
+* 26b5f60 : BUGFIX: swagger duplicate operationId and invalid response
+* 2f4dbef : FEATURE: tsoa cli support run from global packages
+* 51d55f1 : TESTS:  Fix line ending test
+* 169afec : BUGFIX: Return promises from koa handlers
+* a1fd8a0 : 1.1: Parameter decorators
+* a5f668e : 1.0.19
+* 9269eb2 : LOGGING: Better logs/errors when types fail to parse
+* 61587e4 : 1.0.18
+* 838ac3e : FEATURE: Authentication and multi-response methods
+* 331460e : 1.0.17
+* f729626 : better errors
+* 2e76825 : 1.0.16
+* 71f3213 : format
+* 94c8aac : feat: improve error messaging (#55)
+* 0848add : 1.0.15
+* c499f78 : fix test
+* 59ed8af : fix: make --configuration docs match behaviour
+* cae48e9 : fix: correct small typo
+* eee744a : Support dependency injection for controllers
+* d91327f : 1.0.14
+* ccf3e01 : fix linting
+* 330ca9f : Custom generated spec behavior configuration
+* fdbe0a0 : 1.0.13
+* 667742c : Support buffers
+* e20cb5b : 1.0.12
+* 24e7c8d : Fix Extra JSON reference warning (#43)
+* 52f9be7 : 1.0.11
+* 9f27c23 : string literal enum support
+* 24d95dd : fix main tsoa.json ref to entry point
+* 3ae464c : 1.0.10
+* fde53fa : new routes
+* ddfe578 : fix for more recent typescript version + stricker checks (#33)
+* 1319612 : 1.0.9
+* 890aa5f : fix server tests, update readme
+* 87bac77 : 1.0.8
+* c4046f8 : koa support
+* de865f4 : basic hapi support
+* 8018788 : 1.0.7
+* e4d52db : expose tags
+* b6ea832 : 1.0.6
+* 97c89c6 : tag generation
+* 77e2df5 : 1.0.5
+* c67d004 : update deps
+* a0102af : format
+* 57cea44 : reconfigure linting always EOF line more strict typescript configuration fix tsfmt for routes file date params should have date-time format
+* 98e8b51 : add yarn lock, tests for custom errors
+* cfa535f : 1.0.4
+* 9114379 : handle date as query param
+* c6da786 : 1.0.3
+* 35288e0 : Add support for injected express request and other values (#25)
+* 30f1c37 : 1.0.2
+* f60842f : Added guard to handle union types. (#24)
+* 22b4226 : 1.0.1
+* 75aeddd : editorconfig, formatting
+* 0820238 : JWT enabled decorator (#22)
+* c2faf25 : Configuration by json file
+* 8a1b3f2 : fix date test
+* 9e6da68 : 0.0.63
+* 3391e61 : also check for null
+* 14a0fe3 : 0.0.62
+* f6052b3 : support circular references
+* dd22325 : 0.0.61
+*   031995f : Merge branch 'master' of github.com:lukeautry/tsoa
+|\  
+| * 4039ce9 : Class-based model generation (#14)
+* |   424a93f : Merge branch 'master' of github.com:lukeautry/tsoa
+|\ \  
+| |/  
+| * 9aabcc8 : Return functions from decorator factories (#17)
+* | 4d5be88 : remove comment
+|/  
+* 8f22e7d : 0.0.60
+* 704c3e9 : missed an &&
+* b6cf23a : tsfmt unix new line
+* 54d943b : remove baseUrl; doesn't actually work in node context
+* 5957663 : remove clrf; typescript compiler supports lf line endings now
+* 4e69c34 : 0.0.59
+*   4b485e6 : merge master
+|\  
+| * 5fb57d7 : 0.0.58
+| * 097c31c : better crlf --> lf conversion
+| *   b3ab747 : merge master
+| |\  
+| * | 575e293 : 0.0.57
+| * | 0d585a8 : 0.0.56
+| * | 0e0c411 : add keywords
+* | | 557cb19 : 0.0.57
+* | | 51c0113 : base url doesn't work
+* | | 55f46e0 : use new typescript, base url
+| |/  
+|/|   
+* | 91f4e22 : 0.0.56
+* | 2a7d5ea : always publish with unix line endings, run tsfmt
+|/  
+* dd91991 : 0.0.55
+* c42aa27 : formatting
+* 311b987 : 0.0.54
+* 26de9ba : ts format pre-test
+* 6c16f3a : 0.0.53
+* e6d8f37 : ts formatting
+* 170734c : 0.0.52
+* 6553e53 : remove gemnasium badge
+* 9e53565 : lint test files
+* eff3d67 : 0.0.51
+* b304388 : strict null checks
+* 9eb115c : 0.0.50
+* d35ebf1 : don't ignore /dist
+* 5b35d9e : 0.0.49
+* bb7a22f : ts 2.0 module resolution weirdness
+* ca3ea91 : 0.0.48
+* d766884 : point to new cli location
+* bdf5c65 : update deps
+* 0a670bc : 0.0.47
+* a9128b7 : support custom error handler for validation pipeline
+*   f9ccf07 : Merge pull request #10 from danzel/danzel-patch-1
+|\  
+| * 9a64828 : Don't catch and handle errors in the controllers
+|/  
+* 8e745f0 : update readme with optional host
+* cb50962 : 0.0.46
+* 325f73b : host is optional in swagger
+* 84bb526 : 0.0.45
+* 49730cf : new typings system
+* 57e943a : 0.0.44
+* 3ca59f9 : 0.0.43
+* c98d584 : set operationId on methods
+* 1d13013 : 0.0.42
+* 305dd32 : Set type to 'object' for union types
+* e493b1d : 0.0.41
+* 4f6edb0 : fix licensedefault
+* f34c681 : 0.0.40
+* 71e0162 : if there's no package json at approot, then require name/description/license/version
+* 9caeeff : 0.0.39
+* 9757f2b : basepath tweaks
+* f9813a6 : 0.0.38
+* b789e92 : make path optional in route decorator
+* 7df5c39 : 0.0.37
+* 0316064 : fix basepath calculation
+* aa56110 : 0.0.36
+* f24f291 : format basepath
+* b8dfac8 : 0.0.35
+* 6cfe111 : fix basepath for routes
+* c5600e6 : 0.0.34
+* 4f3b90a : middleware, basepath options for route generation
+* 8de0d52 : 0.0.33
+* 1fbb92b : update deps
+* 91660b9 : 0.0.32
+* f44ddcd : fix package.json read
+* 774f163 : 0.0.31
+* 733d8ef : more cli options
+* e614e7e : allow passage of swagger api details
+* dd487d5 : example project link
+* 598c096 : 0.0.30
+* 1e03adb : dependencies, npm badges
+* e9646b9 : link to swagger from readme
+* 1d185b4 : fix express app assignment in readme
+* ffbebe3 : update philosophy to explain interface models
+* fb57aa5 : remove extra cli text
+* 5824e5e : simplify link to cli
+* 6edf54f : readme link to cli docs
+* b5079e1 : update readme
+* c2767c8 : 0.0.29
+* 0d006e1 : if dist doesn't exist, create it
+* 769ef42 : 0.0.28
+* 93441ab : don't lint generated routes
+* 71ad4bc : 0.0.27
+* a310ffd : cli updates
+* 83abfd4 : typescript 2.0 changes
+* 21d2536 : typescript 2.0
+* 391e0b3 : 0.0.26
+* 1fc9176 : date parsing/validation
+* ac28719 : fix readme
+* 322c010 : 0.0.25
+* 914d1ec : string validation, property validation
+* cb312cb : error message space
+* af85df4 : 0.0.24
+* eaf7b8e : fix issue where methods overwrite other methods at the same path
+* 38829e8 : update readme
+* d3429e4 : 0.0.23
+* 11de428 : unnest philosophy
+* 8c1680b : add philosophy
+* cf0a127 : update import statement reference to swagger-ts --> tsoa
+* af6c782 : 0.0.22
+* ced44fa : swagger-ts --> tsoa
+* e6829fa : 0.0.21
+* 32ebbff : for body parameter, parse direct from body
+* f88c91e : 0.0.20
+* 8f1bd71 : fix model validation in generated routes
+* 0732c73 : 0.0.19
+* f456c23 : order properties in routeGenerator
+* f44b84c : TypeScript based route generation
+* af766fb : handle optional parameters with default values; question mark syntax not allowed
+* 6aab815 : mit license
+* 0e37c7f : change badge link
+* e0da381 : 0.0.18
+* f54cd96 : change package name
+* 40cbd6c : codeship badge
+* e680af9 : node version
+* a14a4be : fix test path
+* a935b44 : simple integration test
+* be0d328 : start integration tests
+* 754ca79 : express adapter tests
+* c963105 : 0.0.17
+* 8190173 : don't set example on path
+* 83d627f : 0.0.16
+* c6e1d55 : reorganize decorators, example decorator, example swagger generation for responses
+* 64868ab : 0.0.15
+* 671dda4 : parameter descriptions
+* ca01f83 : integration --> unit
+* 07c3be8 : 0.0.14
+* e0a32ac : handle query/body parameters in a method
+* e137f1a : 0.0.13
+* f2b9cb1 : reject multiple body parameters
+* 3a3ce24 : 0.0.12
+* fdfd5b3 : handle optional parameters/properties
+* a6757ae : handle extended interfaces, various jsdoc descriptions
+* ddd9a94 : use jsdoc comment to generate path description
+* d242a66 : 0.0.11
+* 184593a : tests
+* cb3e76d : fix linting
+* b7bf876 : 0.0.10
+* a7934bf : fix cli
+* 553ae35 : 0.0.9
+* 66d9211 : wrap generator code, return out if error
+* 9a47177 : 0.0.8
+* 0ea7d5e : yargs, typescript as deps
+* 67c0fc0 : 0.0.7
+* e5ffc78 : compile cli
+* cee0654 : 0.0.6
+* 1a04072 : cli for swagger generation
+* 519feef : sort imports
+* 93b2d12 : 0.0.5
+* 96c3d6f : update express adapter: use json response method
+* 80a0b39 : 0.0.4
+* 81b95ad : main entry point file
+* 00c8d34 : 0.0.3
+* ace4fd3 : remove triple slash refs
+* 0ac277a : 0.0.2
+* ec0034a : Split out example code from library code
+* 6c38d64 : more swagger generation
+* 48afb3b : swagger geenrator and more
+* 281739a : add prepublish script to typings/build
+* 8c3b0a5 : init

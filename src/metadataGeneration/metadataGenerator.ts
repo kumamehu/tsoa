@@ -1,9 +1,9 @@
 import * as mm from 'minimatch';
 import * as ts from 'typescript';
 import { Block } from 'typescript';
+import {fsGetFilesFromPath} from '../utils/fs';
 import { ControllerGenerator } from './controllerGenerator';
 import { Tsoa } from './tsoa';
-
 export class MetadataGenerator {
   public readonly nodes = new Array<ts.Node>();
   public readonly typeChecker: ts.TypeChecker;
@@ -14,7 +14,8 @@ export class MetadataGenerator {
   public IsExportedNode(node: ts.Node) { return true; }
 
   constructor(entryFile: string, compilerOptions?: ts.CompilerOptions, private readonly ignorePaths?: string[]) {
-    this.program = ts.createProgram([entryFile], compilerOptions || {});
+    const files: any = fsGetFilesFromPath(entryFile);
+    this.program = ts.createProgram(files, compilerOptions || {});
     this.typeChecker = this.program.getTypeChecker();
   }
 
