@@ -29,7 +29,7 @@ const versionDefault = () => getPackageJsonValue('version', '1.0.0');
 const descriptionDefault = () => getPackageJsonValue('description', 'Build swagger-compliant REST APIs using TypeScript and Node');
 const licenseDefault = () => getPackageJsonValue('license', 'MIT');
 
-const getConfig = async (configPath = 'tsoa.json'): Promise<Config> => {
+const getConfig = async (configPath = 'tsconfig.json'): Promise<Config> => {
   let config: Config;
   try {
     const ext = path.extname(configPath);
@@ -52,7 +52,8 @@ const getConfig = async (configPath = 'tsoa.json'): Promise<Config> => {
       throw Error(`Unhandled error encountered loading '${configPath}': ${err.message}`);
     }
   }
-
+  // Forcing Config Compiler Options as undefined
+  config.compilerOptions = undefined;
   return config;
 };
 
